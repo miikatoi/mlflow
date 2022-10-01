@@ -61,8 +61,8 @@ def _cached_get_s3_client(
         "s3",
         config=Config(
             signature_version=signature_version,
-            connect_timeout=MLFLOW_S3_DEFAULT_TIMEOUT,
-            retries={'max_attempts': MLFLOW_S3_DEFAULT_RETRIES},
+            connect_timeout=MLFLOW_S3_DEFAULT_TIMEOUT.get(),
+            retries={'max_attempts': MLFLOW_S3_DEFAULT_RETRIES.get()},
             ),
         endpoint_url=s3_endpoint_url,
         verify=verify,
