@@ -115,6 +115,14 @@ MLFLOW_S3_IGNORE_TLS = _BooleanEnvironmentVariable("MLFLOW_S3_IGNORE_TLS", False
 #: (default: ``None``)
 MLFLOW_S3_UPLOAD_EXTRA_ARGS = _EnvironmentVariable("MLFLOW_S3_UPLOAD_EXTRA_ARGS", str, None)
 
+#: Specifies the default timeout to use when downloading/uploading a file from/to s3
+#: (default: ``120``).
+MLFLOW_S3_DEFAULT_TIMEOUT = _EnvironmentVariable("MLFLOW_S3_DEFAULT_TIMEOUT", int, 120)
+
+#: Specifies the number of retries to use when downloading/uploading a file from/to s3
+#: (default: ``5``).
+MLFLOW_S3_DEFAULT_RETRIES = _EnvironmentVariable("MLFLOW_S3_DEFAULT_RETRIES", int, 5)
+
 #: Specifies the location of a Kerberos ticket cache to use for HDFS artifact operations.
 #: (default: ``None``)
 MLFLOW_KERBEROS_TICKET_CACHE = _EnvironmentVariable("MLFLOW_KERBEROS_TICKET_CACHE", str, None)

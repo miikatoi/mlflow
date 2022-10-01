@@ -16,6 +16,8 @@ from mlflow.environment_variables import (
     MLFLOW_S3_UPLOAD_EXTRA_ARGS,
     MLFLOW_S3_ENDPOINT_URL,
     MLFLOW_S3_IGNORE_TLS,
+    MLFLOW_S3_DEFAULT_TIMEOUT,
+    MLFLOW_S3_DEFAULT_RETRIES,
 )
 
 _MAX_CACHE_SECONDS = 300
@@ -57,7 +59,11 @@ def _cached_get_s3_client(
 
     return boto3.client(
         "s3",
-        config=Config(signature_version=signature_version),
+        config=Config(
+            signature_version=signature_version,
+            connect_timeout=MLFLOW_S3_DEFAULT_TIMEOUT,
+            retries={'max_attempts': MLFLOW_S3_DEFAULT_RETRIES},
+            ),
         endpoint_url=s3_endpoint_url,
         verify=verify,
     )
